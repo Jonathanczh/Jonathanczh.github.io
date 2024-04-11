@@ -1,3 +1,4 @@
+/* General Settings */
 body, html {
     margin: 0;
     padding: 0;
@@ -6,45 +7,94 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Name Section Styling */
 .name {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Vertically center content */
     align-items: center; /* Horizontally center content */
-    height: 100vh; /* 100% of the viewport height */
+    height: 100vh; /* Full viewport height */
     text-align: center;
-    background: #f4f4f4; /* Adjust color as needed */
+    background: #f4f4f4; /* Light grey background */
 }
 
+/* Arrow Styling and Animation */
 .arrow {
     position: absolute;
-    bottom: 20px; /* Position arrow at the bottom of the `name` div */
-    animation: bounce 2s infinite; /* Optional: adds a bounce animation to the arrow */
+    bottom: 20px; /* Positioned at the bottom of the name section */
+    animation: bounce 2s infinite; /* Bouncing effect */
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-30px);
-    }
-    60% {
-        transform: translateY(-15px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
 }
 
+/* Text Formatting for Name and Paragraphs */
 h1, p {
-    margin: 10px 0; /* Spacing for text elements */
+    margin: 10px 0; /* Uniform spacing for all text elements */
+    font-family: "Calisto MT";
 }
 
-/* Ensure the link has no default styles */
+/* Arrow Link Styling */
 .arrow a {
     text-decoration: none;
-    color: inherit; /* Inherits text color from parent */
+    color: inherit; /* Inherits color from the parent element */
 }
 
+/* Arrow Image Styling */
 .arrow img {
-    width: 50px; /* Set appropriate size for your arrow icon */
-    height: auto;
+    width: 50px; /* Fixed width for arrow image */
+    height: auto; /* Auto height to maintain aspect ratio */
+}
+
+/* Projects Section Styling */
+.projects {
+    padding: 20px;
+    background-color: #f4f4f4; /* Background color for projects section */
+}
+
+/* Gallery Grid Layout */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual Project Item Styling */
+.project-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Project Image Styling */
+.project-item img {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Auto height for scaling */
+    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+/* Project Title Overlay Styling */
+.project-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for text */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth transition for fading in */
+}
+
+/* Hover Effects for Project Items */
+.project-item:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.project-item:hover .project-title {
+    opacity: 1; /* Show the title on hover */
 }
