@@ -11,36 +11,28 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Jonathan's Portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="#projects" class="smooth-scroll">Projects</a></li>
-                    <li><a href="#about" class="smooth-scroll">About Me</a></li>
-                    <li><a href="#contact" class="smooth-scroll">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Jonathan's Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <main class="container">
+    
+    <div class="container">
         <section id="projects">
             <h2>Projects</h2>
-            <div class="project">
-                <div class="project-title">IntrusionNet</div>
-                <div class="project-description">A framework to leverage AI for automating penetration testing.</div>
-            </div>
-            <div class="project">
-                <div class="project-title">CrimsonGPT</div>
-                <div class="project-description">A specialized LLM model focused on penetration testing techniques and methodologies.</div>
-            </div>
+            <div class="project" data-modal-target="#intrusionNetModal">IntrusionNet</div>
+            <!-- Add more projects here -->
         </section>
-
+        
         <section id="about">
             <h2>About Me</h2>
             <p>I'm a student at the Singapore Institute of Technology, majoring in Information Security. I'm passionate about cybersecurity, coding, and learning new technologies. This portfolio showcases a range of projects from security tools to software development experiments that reflect my journey in tech.</p>
         </section>
-
+        
         <section id="contact">
             <h2>Contact</h2>
             <div class="contact-info">
@@ -48,13 +40,24 @@
                 <a href="https://www.linkedin.com/in/jonathanczh00">LinkedIn: jonathanczh00</a>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            © 2024 Jonathan. All rights reserved.
+    </div>
+    
+    <!-- Modal Placeholder -->
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title"></div>
+            <button data-close-button class="close-button">&times;</button>
         </div>
+        <div class="modal-body">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+    <div id="overlay"></div>
+    
+    <footer>
+        © 2024 Jonathan. All rights reserved.
     </footer>
+    
     <script src="js/script.js"></script>
 </body>
 </html>
