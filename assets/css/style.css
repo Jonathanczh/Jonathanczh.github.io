@@ -48,9 +48,15 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates three columns of equal width */
-    gap: 20px; /* Adds space between grid items */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
 }
 
 .grid-item {
