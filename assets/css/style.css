@@ -80,7 +80,7 @@ header {
 /* Projects and Certifications Gallery */
 .project-gallery, .certifications-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Set to always have three columns */
     gap: 15px;
     padding: 20px;
 }
@@ -94,6 +94,21 @@ header {
 
 .project-item:hover, .certifications-item:hover {
     transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-gallery, .certifications-gallery {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to two columns for smaller screens */
+    }
+
+    header, footer {
+        padding: 10px;
+    }
+
+    .arrow img {
+        width: 30px; /* Smaller arrow in smaller screens */
+    }
 }
 
 /* Footer Styles */
