@@ -58,7 +58,7 @@ h1, p {
 /* Gallery Grid Layout */
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc(33.33% - 40px), 1fr)); /* Adjusted for 3 projects per row with 20px gap between */
     gap: 20px;
     padding: 20px;
 }
