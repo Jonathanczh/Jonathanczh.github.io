@@ -44,6 +44,8 @@ body {
 #projects, #certifications {
     padding: 50px 20px;
     text-align: center;
+    min-height: 50vh;  /* Set a minimum height */
+    overflow: hidden;  /* Keeps the layout clean */
 }
 
 .grid {
@@ -53,18 +55,13 @@ body {
     padding: 20px;
 }
 
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr; /* Single column for smaller screens */
-    }
-}
-
 .grid-item {
     background: #f9f9f9; /* Light background for each item */
     border: 1px solid #ccc; /* Border for items */
     border-radius: 8px; /* Rounded corners for aesthetics */
     padding: 10px;
     text-align: center; /* Center-aligns the text */
+    margin-bottom: 20px;  /* Adds space at the bottom of each item */
 }
 
 .grid-item img {
@@ -72,4 +69,10 @@ body {
     height: auto; /* Maintains aspect ratio */
     max-height: 200px; /* Limits image height */
     margin-bottom: 10px; /* Space between image and text */
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
 }
