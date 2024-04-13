@@ -8,9 +8,23 @@ body {
     background-color: #f4f4f4;
 }
 
+h1, h2 {
+    color: #333;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* Layout Styles */
 header, main, footer {
     padding: 20px;
     text-align: center;
+}
+
+main {
+    padding-top: 20px;
 }
 
 /* Header Styles */
@@ -18,15 +32,49 @@ header {
     background: #333;
     color: #fff;
     padding: 20px 0;
+    position: relative; /* Ensures positioning context */
 }
 
-/* Main Content Styles */
-main {
-    padding-top: 20px;
+/* Arrow Styles and Animations */
+.name .arrow {
+    position: absolute;
+    bottom: -20px; /* Adjust as needed to position at the very bottom of the header */
+    left: 50%;
+    transform: translateX(-50%); /* Center the arrow */
+    width: 30px; /* Smaller size for the arrow */
 }
 
-h1, h2 {
-    color: #333;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.name .arrow img {
+    animation: bounce 2s infinite;
+    display: block;
+    width: 100%; /* Ensures the arrow uses the width defined by the container */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-gallery, .certifications-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    header, footer {
+        padding: 10px;
+    }
+
+    .arrow img {
+        width: 30px; /* Smaller arrow in smaller screens */
+    }
 }
 
 /* Projects and Certifications Gallery */
@@ -48,26 +96,6 @@ h1, h2 {
     transform: scale(1.05);
 }
 
-img {
-    width: 100%;
-    height: auto;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .project-gallery, .certifications-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    header, footer {
-        padding: 10px;
-    }
-
-    .arrow img {
-        width: 30px; /* Smaller arrow in smaller screens */
-    }
-}
-
 /* Footer Styles */
 footer {
     text-align: center;
@@ -77,28 +105,10 @@ footer {
     color: #fff;
 }
 
-/* Contact Information */
+/* Contact Information Styles */
 .contact-info {
     padding: 20px;
     background: #e2e2e2;
     margin-top: 20px;
 }
 
-/* Bouncing arrow animation */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
-.arrow img {
-    animation: bounce 2s infinite;
-    display: block;
-    margin: 10px auto 0; /* Center align and reduce top margin */
-}
