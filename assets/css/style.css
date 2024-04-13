@@ -58,6 +58,14 @@ img {
     .project-gallery, .certifications-gallery {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
+
+    header, footer {
+        padding: 10px;
+    }
+
+    .arrow img {
+        width: 30px; /* Smaller arrow in smaller screens */
+    }
 }
 
 /* Footer Styles */
@@ -74,4 +82,23 @@ footer {
     padding: 20px;
     background: #e2e2e2;
     margin-top: 20px;
+}
+
+/* Bouncing arrow animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.arrow img {
+    animation: bounce 2s infinite;
+    display: block;
+    margin: 10px auto 0; /* Center align and reduce top margin */
 }
