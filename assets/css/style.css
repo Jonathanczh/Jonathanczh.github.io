@@ -1,129 +1,46 @@
-/* General Body and Typography Styles */
+/* style.css */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #333; /* Dark text for readability */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-h1, h2 {
-    color: #333;
+.full-screen {
+    height: 100vh; /* Full viewport height */
+    background-color: #C8A2C8; /* Lilac background */
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for proper positioning of the bouncing arrow */
 }
 
-img {
-    width: 100%;
-    height: auto;
-}
-
-/* Layout Styles */
-header, main, footer {
-    padding: 20px;
-    text-align: center;
-}
-
-main {
-    padding-top: 20px;
-}
-
-/* Header Styles */
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    position: relative; /* Ensures positioning context */
-}
-
-/* Arrow Styles and Animations */
-.name .arrow {
+.bounce {
     position: absolute;
-    bottom: -20px; /* Adjust as needed to position at the very bottom of the header */
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Center the arrow */
-    width: 30px; /* Smaller size for the arrow */
+    transform: translateX(-50%);
+    width: 50px;
+    height: auto;
+    animation: bounce 2s infinite;
+    cursor: pointer; /* Indicates this is clickable */
 }
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
     40% {
-        transform: translateY(-10px);
+        transform: translateX(-50%) translateY(-30px);
     }
     60% {
-        transform: translateY(-5px);
+        transform: translateX(-50%) translateY(-15px);
     }
 }
 
-.name .arrow img {
-    animation: bounce 2s infinite;
-    display: block;
-    width: 100%; /* Ensures the arrow uses the width defined by the container */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .project-gallery, .certifications-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    header, footer {
-        padding: 10px;
-    }
-
-    .arrow img {
-        width: 30px; /* Smaller arrow in smaller screens */
-    }
-}
-
-/* Projects and Certifications Gallery */
-.project-gallery, .certifications-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Set to always have three columns */
-    gap: 15px;
-    padding: 20px;
-}
-
-.project-item, .certifications-item {
-    background: white;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.project-item:hover, .certifications-item:hover {
-    transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .project-gallery, .certifications-gallery {
-        grid-template-columns: repeat(2, 1fr); /* Adjust to two columns for smaller screens */
-    }
-
-    header, footer {
-        padding: 10px;
-    }
-
-    .arrow img {
-        width: 30px; /* Smaller arrow in smaller screens */
-    }
-}
-
-/* Footer Styles */
-footer {
+#projects, #certifications {
+    padding: 50px 20px;
     text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    background: #333;
-    color: #fff;
 }
-
-/* Contact Information Styles */
-.contact-info {
-    padding: 20px;
-    background: #e2e2e2;
-    margin-top: 20px;
-}
-

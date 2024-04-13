@@ -5,86 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jonathan Chiu | Portfolio</title>
-    <meta name="description"
-        content="Portfolio of Jonathan Chiu, a Year 2 student at Singapore Institute of Technology showcasing projects and certifications." />
-    <meta name="robots" content="index, follow" />
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/gallery.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <script src="assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <header class="name">
-        <p>Jonathan Chiu</p>
-        <p>Year 2 Student at Singapore Institute of Technology</p>
-        <!-- Add future certifications here -->
-        <div class="arrow">
-            <a href="#projects" aria-label="Scroll to Projects"><img src="assets/imgs/down-arrow.svg"
-                    alt="Scroll down" /></a>
+    <section id="home" class="full-screen">
+        <div class="center-content">
+            <h1>Chiu Zheng Hao Jonathan</h1>
+            <p>Year 2</p>
+            <p>Singapore Institute of Technology</p>
         </div>
-    </header>
-    <main>
-        <section class="projects" id="projects">
-            <h2>Projects</h2>
-            <div class="project-gallery">
-                <div class="project-item">
-                    <img src="assets/imgs/intrusionNet.svg" alt="IntrusionNet Project Image" />
-                    <div class="project-title">IntrusionNet</div>
-                </div>
-                <div class="project-item">
-                    <img src="assets/imgs/project2.jpg" alt="Project 2 Image" />
-                    <div class="project-title">Data Visualization App</div>
-                </div>
-                <div class="project-item">
-                    <img src="assets/imgs/project3.jpg" alt="Project 3 Image" />
-                    <div class="project-title">Machine Learning Model</div>
-                </div>
-                <div class="project-item">
-                    <img src="assets/imgs/project4.jpg" alt="Project 4 Image" />
-                    <div class="project-title">E-commerce Website</div>
-                </div>
-                <div class="project-item">
-                    <img src="assets/imgs/project5.jpg" alt="Project 5 Image" />
-                    <div class="project-title">Mobile App Development</div>
-                </div>
-            </div>
-        </section>
-        <section class="certifications">
-            <h2>Certifications</h2>
-            <div class="certifications-gallery">
-                <div class="certifications-item">
-                    <img src="assets/imgs/certification1.jpg" alt="Certification 1 Image" />
-                    <div class="certification-title">Certification 1</div>
-                </div>
-                <div class="certifications-item">
-                    <img src="assets/imgs/certification2.jpg" alt="Certification 2 Image" />
-                    <div class="certification-title">Certification 2</div>
-                </div>
-                <div class="certifications-item">
-                    <img src="assets/imgs/certification3.jpg" alt="Certification 3 Image" />
-                    <div class="certification-title">Certification 3</div>
-                </div>
-                <div class="certifications-item">
-                    <img src="assets/imgs/certification4.jpg" alt="Certification 4 Image" />
-                    <div class="certification-title">Certification 4</div>
-                </div>
-                <div class="certifications-item">
-                    <img src="assets/imgs/certification5.jpg" alt="Certification 5 Image" />
-                    <div class="certification-title">Certification 5</div>
-                </div>
-            </div>
-        </section>
-        <section class="contact-info">
-            <h2>Contact Me</h2>
-            <p>Email: jonathan.chiu@example.com</p>
-            <p>LinkedIn: linkedin.com/in/jonathanchiu</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Jonathan Chiu. All rights reserved.</p>
-    </footer>
+        <img src="assets/imgs/down-arrow.svg" alt="Scroll down" class="bounce" onclick="scrollToProjects()">
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Details about various projects go here.</p>
+    </section>
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <p>Details about certifications and accomplishments go here.</p>
+    </section>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
