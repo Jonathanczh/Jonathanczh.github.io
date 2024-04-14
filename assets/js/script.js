@@ -22,33 +22,38 @@ for (var i = 0; i < columns; i++) {
     cycleCounts[i] = 0;
 }
 
+// Animation variables
+var fadingOut = false;
+var fadeOpacity = 1;
+
 // Setting up the draw function
 function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+    ctx.fillStyle = `rgba(0, 0, 0, ${fadingOut ? 0.1 : 0.1})`; // Change fade speed here if necessary
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#0f0'; // green text
+    ctx.fillStyle = `rgba(0, 255, 0, ${fadeOpacity})`; // Apply fade to text color
     ctx.font = fontSize + 'px monospace'; // setting font size and type
-    for (var i = 0; i < drops.length; i++) {
-        var text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        drops[i]++;
-        if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
-            drops[i] = 0;
-            cycleCounts[i]++;
+
+    if (!fadingOut) {
+        for (var i = 0; i < drops.length; i++) {
+            var text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            drops[i]++;
+            if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+                drops[i] = 0;
+                cycleCounts[i]++;
+            }
+        }
+
+        // Check if all columns have cycled at least twice
+        if (cycleCounts.every(count => count >= 2)) {
+            fadingOut = true; // Start fading out
+        }
+    } else {
+        fadeOpacity -= 0.05; // Controls the rate of fade out
+        if (fadeOpacity <= 0) {
+            clearInterval(interval); // Stop the interval when fully faded
         }
     }
-
-    // Check if all columns have cycled at least twice
-    if (cycleCounts.every(count => count >= 2)) {
-        clearInterval(interval); // Stop the interval and thereby the animation
-        clearCanvas(); // Clear the canvas for a final time to end with a black screen
-    }
-}
-
-// Function to clear the canvas
-function clearCanvas() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Loop the animation
