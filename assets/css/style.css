@@ -8,21 +8,24 @@ body {
 
 .full-screen {
     height: 100vh; /* Full viewport height */
-    background-color: #1c1c84; /* Navy blue background */
-    color: #FFFFFF; /* White text for high contrast and readability */
+    background-color: #1c1c84; /* Lilac background */
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative; /* Needed for proper positioning of the bouncing arrow */
+    position: relative; /* Ensures that absolute positioning of children is relative to this */
 }
+
 
 .menu-container {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 20px;  /* Adjust this value as needed to position the menu */
+    right: 20px;  /* Adjust this value as needed to position the menu */
+    z-index: 1000;  /* Ensures it stays on top of other content */
 }
+
 
 .hamburger-menu {
     font-size: 30px;
