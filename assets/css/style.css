@@ -19,3 +19,35 @@
     position: absolute;
     width: 100%;
 }
+
+h1, h2{
+    color: white;
+}
+
+/* Additional CSS for the neon box effect and fade-in */
+.intro {
+    width: 400px;
+    height: 175px;
+    background-color: black;
+    border: 2px solid #39FF14; /* Neon green */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5); /* Start scaled down */
+    opacity: 0; /* Start invisible */
+    transition: opacity 2s ease, transform 2s ease; /* Smooth transitions */
+    text-align: center;
+}
+
+
+/* CSS Keyframes for the fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5); /* Start from a scaled down size */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1); /* Scale to normal size */
+    }
+}

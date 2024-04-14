@@ -1,52 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
   const matrix = document.getElementById("matrix");
-  const fontSize = 20; // Font size for characters
-  let columns = Math.floor(window.innerWidth / fontSize);
-  let rows = Math.floor(window.innerHeight / fontSize);
-  let trailingInterval; // Store interval ID for clearing
+  const intro = document.getElementById("intro"); // Get the intro div for fading in
+  const fontSize = 20;
+  let columns = getColumnCount();
+  let rows = getRowCount();
+  let trailingInterval;
 
-  window.addEventListener("resize", handleResize);
+  window.addEventListener('resize', handleResize);
+  fillMatrix();
+
+  function getColumnCount() {
+    return Math.floor(window.innerWidth / fontSize);
+  }
+
+  function getRowCount() {
+    return Math.floor(window.innerHeight / fontSize);
+  }
 
   function handleResize() {
-    const newColumns = Math.floor(window.innerWidth / fontSize);
+    const newColumns = getColumnCount();
     const columnDiff = newColumns - columns;
-    
-    if (columnDiff > 0) {
-      // Add new columns at the end
-      addColumnsAtEnd(columnDiff);
-    } else if (columnDiff < 0) {
-      // Remove columns from the end
-      removeColumnsFromEnd(-columnDiff);
-    }
-    
-    columns = newColumns; // Update the columns count after resizing
+    adjustColumns(columnDiff);
+    columns = newColumns;
   }
-  
+
+  function adjustColumns(diff) {
+    if (diff > 0) {
+      addColumnsAtEnd(diff);
+    } else if (diff < 0) {
+      removeColumnsFromEnd(-diff);
+    }
+  }
+
   function addColumnsAtEnd(count) {
-    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-      const row = matrix.children[rowIndex];
-      for (let i = 0; i < count; i++) {
-        const char = document.createElement("span");
-        char.className = "character";
-        char.textContent = String.fromCharCode(33 + Math.random() * 94);
-        char.style.position = "absolute";
-        char.style.left = `${(columns + i) * fontSize}px`;
-        row.appendChild(char);
-      }
+    Array.from(matrix.children).forEach(row => {
+      addCharactersToRow(row, count, columns);
+    });
+    columns += count; // Update total columns count after addition
+  }
+
+  function addCharactersToRow(row, count, startColumn) {
+    for (let i = 0; i < count; i++) {
+      const char = createCharacter(startColumn + i);
+      row.appendChild(char);
     }
   }
-  
+
+  function createCharacter(columnIndex) {
+    const char = document.createElement("span");
+    char.className = "character";
+    char.textContent = String.fromCharCode(33 + Math.random() * 94);
+    char.style.cssText = `position: absolute; left: ${columnIndex * fontSize}px;`;
+    return char;
+  }
+
   function removeColumnsFromEnd(count) {
-    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-      const row = matrix.children[rowIndex];
-      for (let i = 0; i < count; i++) {
-        if (row.children.length > 0) {
-          row.removeChild(row.lastChild);
-        }
-      }
+    Array.from(matrix.children).forEach(row => {
+      removeCharactersFromRow(row, count);
+    });
+  }
+
+  function removeCharactersFromRow(row, count) {
+    while (count-- > 0 && row.lastChild) {
+      row.removeChild(row.lastChild);
     }
   }
-  
 
   function fillMatrix() {
     let delay = 0; // Initial delay
@@ -57,41 +75,37 @@ document.addEventListener("DOMContentLoaded", function () {
       delay += 50; // Increment delay for each row
     }
 
-    // Start trailing columns after the last row is created
+    // Start trailing columns and intro fade-in after the last row is created
     setTimeout(trailingColumn, delay);
+    setTimeout(introFadeIn, delay + 2000); // Delay the intro visibility by 5 seconds after trailing starts
+  }
+
+  function introFadeIn() {
+    intro.style.transition = 'opacity 2s ease-in-out, transform 2s ease';
+    intro.style.opacity = 1; // Make the intro visible
+    intro.style.transform = 'translate(-50%, -50%) scale(1)'; // Scale to normal size from the scaled-down state
   }
 
   function createAndFadeRow(rowIndex) {
     const row = document.createElement("div");
     row.className = "row";
-    matrix.appendChild(row);
-
-    for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
-      const char = document.createElement("span");
-      char.className = "character";
-      char.textContent = String.fromCharCode(33 + Math.random() * 94);
-      char.style.position = "absolute";
-      char.style.left = `${columnIndex * fontSize}px`;
-      row.appendChild(char);
-    }
-
     row.style.top = `${rowIndex * fontSize}px`;
+    matrix.appendChild(row);
+    addCharactersToRow(row, columns, 0);
     fadeRow(row);
   }
 
   function fadeRow(row) {
     setTimeout(() => {
-        row.style.transition = "opacity 0.5s ease-in-out";
-        row.style.opacity = 0.1; // Slightly visible, adjust as needed
-    }, 500); // Start fading after 500ms
-}
-
+      row.style.opacity = 0.1;
+      row.style.transition = "opacity 0.5s ease-in-out";
+    }, 500);
+  }
 
   function trailingColumn() {
     trailingInterval = setInterval(() => {
       for (let i = 0; i < 5; i++) {
-        const randomColumnIndex = Math.floor(Math.random() * columns);
-        createAndFadeColumn(randomColumnIndex);
+        createAndFadeColumn(Math.floor(Math.random() * columns));
       }
     }, 200);
   }
@@ -100,33 +114,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let yPos = 0;
     function addAndFadeCharacter() {
       if (yPos < window.innerHeight) {
-        const char = document.createElement("span");
-        char.className = "character";
-        char.textContent = String.fromCharCode(33 + Math.random() * 94);
-        char.style.position = "absolute";
-        char.style.left = `${columnIndex * fontSize}px`;
+        const char = createCharacter(columnIndex);
         char.style.top = `${yPos}px`;
         matrix.appendChild(char);
-
-        setTimeout(() => {
-          fadeCharacter(char);
-        }, 100);
-
+        fadeCharacter(char);
         yPos += fontSize;
         setTimeout(addAndFadeCharacter, 30);
       }
     }
-
     addAndFadeCharacter();
   }
 
   function fadeCharacter(char) {
-    char.style.transition = "opacity 0.2s ease-in-out";
-    char.style.opacity = 0.05;
     setTimeout(() => {
-      matrix.removeChild(char);
-    }, 500);
+      char.style.opacity = 0.05;
+      char.style.transition = "opacity 0.2s ease-in-out";
+      setTimeout(() => matrix.removeChild(char), 500);
+    }, 100);
   }
-
-  fillMatrix(); // Start filling the matrix on page load
 });
