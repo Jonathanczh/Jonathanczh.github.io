@@ -1,4 +1,4 @@
-// Initializing the canvas
+// Initialising the canvas
 var canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d');
 
@@ -6,53 +6,50 @@ var canvas = document.querySelector('canvas'),
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Matrix characters - binary 1s and 0s
-var characters = '10'.split('');
+// Setting up the letters
+var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ';
+letters = letters.split('');
 
-// Font settings
-var fontSize = 14,
+// Setting up the columns
+var fontSize = 20,
     columns = canvas.width / fontSize;
 
-// Initialize raindrops positions
-var drops = Array.from({ length: columns }).fill(0);
+// Setting up the drops
+var drops = [];
+var cycleCounts = []; // Track how many times each column has cycled
+for (var i = 0; i < columns; i++) {
+    drops[i] = 1;
+    cycleCounts[i] = 0;
+}
 
-// Text to display
-const text = "Welcome to\nJonathan's Portfolio";
-const textLines = text.split('\n');
-var maxWidth = Math.max(...textLines.map(line => ctx.measureText(line).width));
-
-// Prepare text positioning
-var textX = (canvas.width - maxWidth) / 2;
-var textY = canvas.height / 2 - (textLines.length / 2 * fontSize);
-
-// Draw function
+// Setting up the draw function
 function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillStyle = 'rgba(0, 0, 0, .1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#0f0';
-    ctx.font = fontSize + 'px monospace';
-
+    ctx.fillStyle = '#0f0'; // green text
+    ctx.font = fontSize + 'px monospace'; // setting font size and type
     for (var i = 0; i < drops.length; i++) {
-        var character = characters[Math.floor(Math.random() * characters.length)];
-        var x = i * fontSize;
-        var y = drops[i] * fontSize;
-
-        // Draw the rain drop
-        ctx.fillText(character, x, y);
-
-        // Increment or reset
+        var text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         drops[i]++;
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
             drops[i] = 0;
+            cycleCounts[i]++;
         }
     }
 
-    // Draw the resolved text
-    ctx.fillStyle = '#FFF'; // White color for the final text
-    textLines.forEach((line, index) => {
-        ctx.fillText(line, textX, textY + index * fontSize);
-    });
+    // Check if all columns have cycled at least twice
+    if (cycleCounts.every(count => count >= 2)) {
+        clearInterval(interval); // Stop the interval and thereby the animation
+        clearCanvas(); // Clear the canvas for a final time to end with a black screen
+    }
+}
+
+// Function to clear the canvas
+function clearCanvas() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Loop the animation
-setInterval(draw, 30);
+var interval = setInterval(draw, 33);
