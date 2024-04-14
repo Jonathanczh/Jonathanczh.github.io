@@ -8,8 +8,8 @@ body {
 
 .full-screen {
     height: 100vh; /* Full viewport height */
-    background-color: #C8A2C8; /* Lilac background */
-    color: #FFFFFF;
+    background-color: #1c1c84; /* Navy blue background */
+    color: #FFFFFF; /* White text for high contrast and readability */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,40 @@ body {
     text-align: center;
     position: relative; /* Needed for proper positioning of the bouncing arrow */
 }
+
+.menu-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.hamburger-menu {
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
 
 .bounce {
     position: absolute;
@@ -57,7 +91,7 @@ body {
 
 .grid-item {
     background: #f9f9f9; /* Light background for each item */
-    border: 1px solid #ccc; /* Border for items */
+    border: 1px solid #ccc; /*   Border for items */
     border-radius: 8px; /* Rounded corners for aesthetics */
     padding: 10px;
     text-align: center; /* Center-aligns the text */

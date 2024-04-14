@@ -4,3 +4,12 @@ function scrollToProjects() {
     const projectsSection = document.getElementById('projects');
     projectsSection.scrollIntoView({ behavior: 'smooth' });
 }
+
+function toggleMenu() {
+    var dropdown = document.querySelector('.dropdown-content');
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
+}
