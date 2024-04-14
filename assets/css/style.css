@@ -1,3 +1,21 @@
-* { margin: 0; padding: 0; }
-body, html { height: 100%; background: #000; }
-canvas { display: block; position: absolute; }
+#matrix {
+    position: absolute;  /* Use absolute positioning for full control over the div */
+    top: 0;              /* Align the top edge of the element with the viewport */
+    left: 0;             /* Align the left edge of the element with the viewport */
+    width: 100vw;        /* Set width to 100% of the viewport width */
+    height: 100vh;       /* Set height to 100% of the viewport height */
+    background-color: black; /* Set background color to black */
+    color: #0f0;         /* Set text color to green, typical of Matrix effect */
+    overflow: hidden;    /* Hide any content that overflows the div's box */
+    font-family: 'Courier New', monospace; /* Styling for the text */
+    font-size: 20px;     /* Set the font size */
+}
+
+.character {
+    color: #0f0;
+}
+
+.row {
+    position: absolute;
+    width: 100%;
+}
