@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" style="color-scheme: light">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,25 +8,36 @@
     <link rel="stylesheet" href="assets/css/homepage.css">
     <script src="assets/js/homepage.js" defer></script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="top-section"> <!-- Top section for Profile, Contact, and Projects -->
-            <div class="sidebar">
-                <div class="image-box">
-                    <img src="path_to_image.jpg" alt="Profile Picture" style="width: 100%; height: auto;">
-                </div>
-                <div class="contact-info">
-                    <p>Contact details</p>
-                    
-                </div>
-            </div>
-            <div class="projects">
-                <p>Projects & Certifications</p>
-            </div>
+    <header>
+        <div class="name-bar">Jonathan's File</div>
+        <div class="tab-bar">
+            <button class="tab" onclick="openTab('about')">ABOUT ME</button>
+            <button class="tab" onclick="openTab('resume')">RESUME</button>
+            <button class="tab" onclick="openTab('projects')">PROJECTS</button>
+            <button class="tab" onclick="openTab('certifications')">CERTIFICATIONS</button>
+            <button class="tab" onclick="openTab('competitions')">COMPETITIONS</button>
+            
         </div>
-        <div class="resume"> <!-- Bottom section for Resume -->
-            <p>Resume content</p>
-        </div>
+    </header>
+
+    <div id="about" class="tab-content" style="display:none;">
+        <!-- About me information goes here -->
     </div>
+    <div id="resume" class="tab-content" style="display:none;">
+        <!-- Resume content goes here -->
+    </div>
+    <div id="projects" class="tab-content" style="display:none;">
+        <!-- Projects content goes here -->
+    </div>
+    <div id="certifications" class="tab-content" style="display:none;">
+        <!-- Certifications content goes here -->
+    </div>
+    <div id="competitions" class="tab-content" style="display:none;">
+        <!-- Competitions content goes here -->
+    </div>
+    
 </body>
+
 </html>

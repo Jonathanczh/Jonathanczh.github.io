@@ -1,87 +1,73 @@
 @font-face {
-    font-family: cantarell;
-    src: url(/assets/font/Cantarell-Regular.ttf);
+    font-family: 'cantarell';
+    src: url('/assets/font/Cantarell-Regular.ttf');
 }
 
-/* General resets and settings */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body, html {
-    width: 100%;
-    height: 100vh;
+body {
     background-color: #222222;
-    font-family: cantarell, sans-serif;
-    color: #ffffff;
-    text-align: center;
     margin: 0;
-    padding: 0;
-}
-
-/* Container setup */
-.container {
-    display: flex;
-    flex-direction: column;
     height: 100vh;
-    width: 100%;
-}
-
-/* Top section setup */
-.top-section {
-    display: flex;
-    width: 100%;
-    flex: 1;
-}
-
-/* Sidebar styling */
-.sidebar {
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    background-color: #333333;
-}
-
-.image-box, .contact-info {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    font-family: 'cantarell', sans-serif;
 }
 
-.image-box {
-    height: 30%;
-}
-
-.contact-info {
-    flex: 1;
-    background-color: #444444;
-}
-
-/* Projects styling */
-.projects {
-    flex: 1;
-    width: 70%;
-    padding: 20px;
-    background-color: #555555;
-}
-
-/* Resume styling */
-.resume {
-    flex: 0.1;
-    padding: 20px;
-    background-color: #666666;
-    font-size: 25px;
+.name-bar {
     width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 5px;
+    font-size: 20px; /* Adjust size as needed */
+    font-weight: bold; /* Optional: making the text bold */
 }
 
-/* Text styles */
-h1 {
-    font-weight: bold; /* Make all h1 elements bold */
+.tab-bar {
+    display: flex;
+    width: 100%; /* Take up the full width */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative; /* Relative positioning for later adjustments if needed */
 }
 
-p {
-    font-weight: normal; /* Ensure all p elements are not bold */
+.tab {
+    flex-grow: 1;
+    background-color: #666666;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 5px;
+    margin-left: 2px; /* Applies to all but overridden for first child */
+    margin-right: 2px; /* Applies to all but overridden for last child */
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: background-color 0.3s;
 }
+
+.tab:first-child {
+    margin-left: 10px;
+}
+
+.tab:last-child {
+    margin-right: 10px;
+}
+
+.tab:hover, .tab:focus, .tab.active {
+    background-color: #888888;
+}
+
+.tab-content {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position to cover the necessary area under the tabs */
+    top: 74px; /* Adjust based on the height of your header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;    
+    transition: transform 0.5s ease-out, opacity 0.5s ease-in; /* Smooth transition for transforming */
+    transform: scaleY(0); /* Start scaled down */
+    transform-origin: top; /* Grow from the top */
+    opacity: 0; /* Start fully transparent */
+}
+
