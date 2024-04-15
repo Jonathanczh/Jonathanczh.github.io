@@ -28,7 +28,7 @@ body, html {
 }
 
 .sidebar {
-    width: 20%; /* Adjust based on your layout preference */
+    width:15%; /* Adjust based on your layout preference */
     display: flex;
     flex-direction: column;
     background-color: #333333; /* Slightly lighter than body for contrast */
@@ -42,7 +42,6 @@ body, html {
     padding: 20px;
 }
 
-
 .contact-info {
     flex: 1;
     padding: 20px;
@@ -51,7 +50,8 @@ body, html {
 }
 
 .projects {
-    flex: 1; /* Adjust the flex basis to match the space needed */
+    flex: 1; /* Projects take the remaining space in the top-section */
+    width: 70%;
     padding: 20px;
     background-color: #555555;
 }
